@@ -1,7 +1,6 @@
 #ifndef TETRISBOARD_H
 #define TETRISBOARD_H
 
-#include <vector>
 #include <bitset>
 
 class TetrisBoard {
@@ -14,6 +13,7 @@ public:
     const bool flipCell(int x, int y);
     const bool getCell(int x, int y);
     const uint16_t* getGridState();
+    const bool rowCleared(int x);
     void clearBoard();
     void printBoardState();
     const int ROWS = 20;

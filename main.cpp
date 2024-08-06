@@ -94,7 +94,7 @@ int main(int argc, char* argv[]) {
                 }
             }
         }
-
+        
         // Present the backbuffer
         SDL_RenderPresent(renderer);
     }

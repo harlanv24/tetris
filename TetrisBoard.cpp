@@ -3,9 +3,7 @@
 #include <cstdint>
 #include <cstring>
 
-TetrisBoard::TetrisBoard()
-    : gridState(new uint16_t[ROWS]()) { // Initialize grid with zeros
-}
+TetrisBoard::TetrisBoard(): gridState(new uint16_t[ROWS]()) {}
 
 TetrisBoard::~TetrisBoard() {
     delete[] gridState;
@@ -54,4 +52,8 @@ void TetrisBoard::printBoardState() {
         }
         std::cout << std::endl;
     }
+}
+
+const bool TetrisBoard::rowCleared(int x) {
+    return gridState[x] == 0;
 }
