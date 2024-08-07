@@ -36,7 +36,7 @@ const bool TetrisBoard::getCell(int x, int y) {
     return (gridState[x] & (1 << y)) != 0;
 }
 
-const uint16_t* TetrisBoard::getGridState() {
+uint16_t* TetrisBoard::getGridState() {
     return gridState;
 }
 

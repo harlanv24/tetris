@@ -15,10 +15,13 @@ public:
     ~Game();
     
     void drawBlocks();
-    bool spawnBlock(int block_idx);
+    bool blockBelow();
+    bool spawnBlock();
+    void tick();
 
 private:
     BlockType blockTypes[7] = {I, O, T, S, Z, J, L};
+    Block currBlock;
     TetrisBoard board;
     SDL_Renderer* renderer;
     SDL_Rect bg;

@@ -12,6 +12,10 @@ const uint16_t* Block::getShape() {
     return shape;
 }
 
+const uint8_t* Block::getColor() {
+    return color;
+}
+
 void Block::rotate() {
     // TODO: Implement movement
 }

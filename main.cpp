@@ -1,10 +1,12 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 #include "TetrisBoard.h"
+#include "Block.h"
+#include "Game.h"
 
 const int WINDOW_WIDTH = 1200;
 const int WINDOW_HEIGHT = 800;
-const int CELL_SIZE = 35;
+
 
 int main(int argc, char* argv[]) {
     // Initialize SDL
@@ -37,18 +39,7 @@ int main(int argc, char* argv[]) {
     bg.w = WINDOW_WIDTH * 7 / 24; // 350 px 
     bg.h = WINDOW_HEIGHT * 7 / 8; // 700 px
 
-    TetrisBoard board = TetrisBoard();
-    board.setCell(14, 9, true);
-    board.setCell(15, 9, true);
-    board.setCell(14, 8, true);
-    board.setCell(14, 7, true);
-    board.setCell(10, 9, true);
-    board.setCell(3, 9, true);
-    board.setCell(4, 9, true);
-    board.setCell(3, 8, true);
-    board.setCell(3, 7, true);
-    board.setCell(3, 1, true);
-    board.printBoardState();
+    Game game(renderer, &bg);
 
     // Main game loop
     bool running = true;
@@ -74,27 +65,7 @@ int main(int argc, char* argv[]) {
             std::cerr << "SDL_RenderFillRect Error: " << SDL_GetError() << std::endl;
         }
         
-        for (int r = 0; r < board.ROWS; r++) {
-            for (int c = 0; c < board.ROW_SIZE; c++) {
-                if (board.getCell(r, c)) {
-                    SDL_Rect cell;
-                    cell.x = bg.x + CELL_SIZE * c;
-                    cell.y = bg.y + CELL_SIZE * r;
-                    cell.w = CELL_SIZE;
-                    cell.h = CELL_SIZE;
-                    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-                    SDL_RenderDrawRect(renderer, &cell);
-                    SDL_RenderFillRect(renderer, &cell);
-                    SDL_SetRenderDrawColor(renderer, 191, 57, 102, 255);
-                    cell.x += 1;
-                    cell.y += 1;
-                    cell.w = CELL_SIZE - 2;
-                    cell.h = CELL_SIZE - 2;
-                    SDL_RenderFillRect(renderer, &cell);
-                }
-            }
-        }
-        
+
         // Present the backbuffer
         SDL_RenderPresent(renderer);
     }
