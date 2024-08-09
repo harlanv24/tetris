@@ -10,8 +10,6 @@ class Block {
 public:
     Block(BlockType type);
 
-    ~Block();
-
     const BlockType getType();
     const uint16_t* getShape();
     const uint8_t* getColor();

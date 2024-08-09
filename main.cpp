@@ -38,8 +38,8 @@ int main(int argc, char* argv[]) {
     bg.y = WINDOW_HEIGHT / 16;
     bg.w = WINDOW_WIDTH * 7 / 24; // 350 px 
     bg.h = WINDOW_HEIGHT * 7 / 8; // 700 px
-
-    Game game(renderer, &bg);
+    Block currBlock = Block(I);
+    Game game(renderer, &bg, currBlock);
 
     // Main game loop
     bool running = true;
@@ -64,8 +64,7 @@ int main(int argc, char* argv[]) {
         if (SDL_RenderFillRect(renderer, &bg) != 0) {
             std::cerr << "SDL_RenderFillRect Error: " << SDL_GetError() << std::endl;
         }
-        
-
+        game.tick();
         // Present the backbuffer
         SDL_RenderPresent(renderer);
     }

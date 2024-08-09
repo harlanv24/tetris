@@ -10,9 +10,7 @@ const int CELL_SIZE = 35;
 
 class Game {
 public:
-    Game(SDL_Renderer* renderer, SDL_Rect* bg);
-
-    ~Game();
+    Game(SDL_Renderer* renderer, SDL_Rect* bg, Block& currBlock);
     
     void drawBlocks();
     bool blockBelow();
@@ -21,7 +19,7 @@ public:
 
 private:
     BlockType blockTypes[7] = {I, O, T, S, Z, J, L};
-    Block currBlock;
+    Block& currBlock;
     TetrisBoard board;
     SDL_Renderer* renderer;
     SDL_Rect bg;
